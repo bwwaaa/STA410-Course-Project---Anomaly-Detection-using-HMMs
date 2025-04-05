@@ -1,5 +1,5 @@
 # STA410-Course-Project---Anomaly-Detection-using-HMMs
-This repository contains the files for a simulation of system log events and the usage of Hidden Markov Models (HMM), log-likelihoods, and z-scores to detect anomalous behavior. This is a submission for STA410 (Statistical Computation) by Monica Di Gennaro. (Student number: 1006988556, utorid: digenna4)
+This repository contains the files for a simulation of system log events and the usage of Hidden Markov Models (HMMs), log-likelihoods, and z-scores to detect anomalous behavior. This is a submission for STA410 (Statistical Computation) by Monica Di Gennaro. (Student number: 1006988556, utorid: digenna4)
 
 ## Files in this repository
 The following files can be found in this repository:
