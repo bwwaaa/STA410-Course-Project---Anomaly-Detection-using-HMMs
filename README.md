@@ -5,7 +5,7 @@ This repository contains the files for a simulation of system log events and the
 The following files can be found in this repository:
 - README.md: the in-depth description of what this project has to offer.
 - main_simulation.py: the file with the entire functional code. Includes visual representations of the process.
-- main_simulation.ipynb: the .ipynb file of main_simulation.py (RECCOMENDED FOR VIEWING).
+- main_simulation.ipynb: the .ipynb file of main_simulation.py (reccomended to run project on Google Colab with .ipynb file due to some imports and installations.)
 
 # Overview of the project
 ## Simulating the System Logs
