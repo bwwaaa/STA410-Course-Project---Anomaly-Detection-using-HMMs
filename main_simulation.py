@@ -19,6 +19,8 @@ from hmmlearn.hmm import GaussianHMM
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from collections import defaultdict
 import statistics
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 
 """## Simulating the System User Log Events Sequences using SimPy"""
 
@@ -178,11 +180,41 @@ all_X_normalized = scaler.transform(all_X)
 # score users using log-likelihood, a higher (less negative) score means the user behaviour looks normal, and much lower (very negative) score means it is abnormal
 
 user_scores = {}
+log_likelihoods = []
 index = 0
 for user, seq in all_encoded_sequences.items():
     seq_normalized = all_X_normalized[index:index+len(seq)].reshape(-1, 1)
     user_scores[user] = model.score(seq_normalized)
+    log_likelihoods.append(user_scores[user])
     index += len(seq)
+
+"""## Plot for Visualizing Sequences and State Predictions"""
+
+plt.figure(figsize=(10, 6))
+
+for user, seq in all_encoded_sequences.items():
+    reshaped = np.array(seq).reshape(-1, 1)
+    scaled = scaler.transform(reshaped)
+
+    # Predict the states for each observation
+    states = model.predict(scaled)
+
+    plt.plot(range(len(states)), states, label=f'User {user}')
+
+plt.title("Predicted States for Each User's Sequence")
+plt.xlabel("Time Step")
+plt.ylabel("State")
+plt.legend(loc='best')
+plt.show()
+
+"""## Plot for Visualizing the HMM Learning Process"""
+
+plt.figure(figsize=(10, 6))
+plt.plot(log_likelihoods, marker='o', linestyle='-', color='b')
+plt.title("Log-Likelihood of Sequences Under HMM Model")
+plt.xlabel("User Index")
+plt.ylabel("Log-Likelihood Score")
+plt.show()
 
 """## Detect Anomalies Using Z-scores"""
 
